@@ -43,6 +43,15 @@ def sortdb():
 #                 database.pop(index)
 #     return database
 
+@app.delete(mainurl)
+def deleteItem(ppl:Dict):
+    for item in database:
+        index = database.index(item)
+        for key in ppl:
+            if(database[index][key]==ppl[key]):
+                database.pop(index)
+    return database
+
 # todo: печатать только те данные, что были добавлены
 @app.post(mainurl)
 def getdata(ppl: People):
